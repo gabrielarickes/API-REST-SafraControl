@@ -1,6 +1,8 @@
 package br.com.gabriela.safra_control.dto;
 
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -22,13 +24,15 @@ public class SafraDto {
     @NotBlank
     private String tipoCultura;
 
-    @NotNull
+    @NotNull(message = "A quantidade é obrigatória")
+    @Min(value = 0, message = "A quantidade não pode ser negativa")
     private Integer quantidade;
 
     @NotBlank
     private String unidadeMedida;
 
-    @NotNull
+    @NotNull(message = "O valor da venda é obrigatório")
+    @DecimalMin(value = "0.0", message = "O valor de venda não pode ser negativo")
     private BigDecimal valorVendaUnidade;
 
 }
