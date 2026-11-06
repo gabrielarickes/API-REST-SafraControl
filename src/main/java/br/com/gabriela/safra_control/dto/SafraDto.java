@@ -18,17 +18,17 @@ import java.math.BigDecimal;
 
 public class SafraDto {
 
-    @NotNull
+    @NotNull(message = "O ano da safra é obrigatório")
     private Integer ano;
 
-    @NotBlank
+    @NotBlank(message = "O tipo de cultura é obrigatório")
     private String tipoCultura;
 
     @NotNull(message = "A quantidade é obrigatória")
     @Min(value = 0, message = "A quantidade não pode ser negativa")
     private Integer quantidade;
 
-    @NotBlank
+    @NotBlank(message = "A unidade de medida é obrigatória")
     private String unidadeMedida;
 
     @NotNull(message = "O valor da venda é obrigatório")
