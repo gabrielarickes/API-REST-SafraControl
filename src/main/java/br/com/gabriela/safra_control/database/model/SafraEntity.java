@@ -2,8 +2,6 @@ package br.com.gabriela.safra_control.database.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-
 import java.math.BigDecimal;
 
 @Entity
@@ -14,8 +12,17 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class SafraEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "safra_generator"
+    )
+    @SequenceGenerator(
+            name = "safra_generator",
+            sequenceName = "safra_seq",
+            allocationSize = 1
+    )
     private Integer id;
 
     @Column(nullable = false)

@@ -2,8 +2,6 @@ package br.com.gabriela.safra_control.database.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -15,8 +13,17 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class GastosEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "gastos_generator"
+    )
+    @SequenceGenerator(
+            name = "gastos_generator",
+            sequenceName = "gastos_seq",
+            allocationSize = 1
+    )
     private Integer id;
 
     @Column(nullable = false, name = "tipo_gasto")
