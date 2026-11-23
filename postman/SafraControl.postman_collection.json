@@ -1,0 +1,597 @@
+{
+  "info": {
+    "_postman_id": "31e446f2-1c57-4642-aab1-426b6dce300a",
+    "name": "SafraControl",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59184455",
+    "_collection_link": "https://go.postman.co/collection/59184455-31e446f2-1c57-4642-aab1-426b6dce300a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Safra",
+      "item": [
+        {
+          "name": "/safra",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/safra",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/safra/12",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "12"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"ano\": 2012, \"tipoCultura\": \"Soja\", \"quantidade\": 100,\n  \"unidadeMedida\": \"sacas\", \"valorVendaUnidade\": 66.00 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"ano\": 2012, \"tipoCultura\": \"Soja\", \"quantidade\": 150,\n  \"unidadeMedida\": \"sacas\", \"valorVendaUnidade\": 70.00 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra/13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "13"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"valorVendaUnidade\": 60.00 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra/13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "13"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/safra/13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "13"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Gastos",
+      "item": [
+        {
+          "name": "/gastos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/gastos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "gastos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}/gastos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/safra/12/gastos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "12",
+                "gastos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}/gastos",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"tipoGasto\": \"Diesel\", \"descricao\": \"Combustível da colheita\",\n  \"valor\": 500.00, \"dataGasto\": \"2012-03-23\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra/13/gastos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "13",
+                "gastos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/gastos/{gastoId}",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"tipoGasto\": \"Diesel\", \"descricao\": \"Combustível da colheita\",\n  \"valor\": 100.00, \"dataGasto\": \"2012-03-28\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/gastos/24",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "gastos",
+                "24"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/gastos/{gastoId}",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \"dataGasto\": \"2012-04-28\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/gastos/24",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "gastos",
+                "24"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/gastos/{gastoId}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/gastos/24",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "gastos",
+                "24"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "relatório",
+      "item": [
+        {
+          "name": "/safra/{safraId}/relatorio",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/safra/12/relatorio",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "12",
+                "relatorio"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/mais_lucrativa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/safra/mais_lucrativa",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "mais_lucrativa"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Error",
+      "item": [
+        {
+          "name": "/safra",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"ano\": 2012, \"tipoCultura\": \"Soja\", \"quantidade\": -100,\n  \"unidadeMedida\": \"sacas\", \"valorVendaUnidade\": 66.00 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"ano\": 2012, \"tipoCultura\": \"Soja\", \"quantidade\": 150,\n  \"unidadeMedida\": \"sacas\", \"valorVendaUnidade\": 70.00 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra/13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "13"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"valorVendaUnidade\": 60.00 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra/13",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "13"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/gastos/{gastoId} Copy",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"tipoGasto\": \"Diesel\", \"descricao\": \"Combustível da colheita\",\n  \"valor\": 100.00}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/gastos/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "gastos",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}/gastos",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"tipoGasto\": \"Diesel\", \"descricao\": \"Combustível da colheita\",\n  \"valor\": -500.00, \"dataGasto\": \"2012-03-23\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra/13/gastos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "13",
+                "gastos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra/{safraId}/gastos",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"tipoGasto\": \"Diesel\", \"descricao\": \"Combustível da colheita\",\n   \"dataGasto\": \"2012-03-23\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra/13/gastos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra",
+                "13",
+                "gastos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/gastos/{gastoId} Copy",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{  \"valor\": -100.00 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/gastos/24",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "gastos",
+                "24"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/safra",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"ano\": 2026, \"tipoCultura\": \"bergamota\", \"quantidade\": 100,\n  \"unidadeMedida\": \"sacas\", \"valorVendaUnidade\": 66.00 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/safra",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "safra"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
