@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const formulario = document.getElementById("formEditarSafra");
@@ -13,6 +12,75 @@ document.addEventListener("DOMContentLoaded", function () {
         'button[type="submit"]'
     );
 
+    const textoBotao = botaoSalvar.textContent.trim();
+
+    const campos = formulario.elements;
+
+    function mostrarErro(texto) {
+        mensagemErro.textContent = texto;
+        mensagemErro.hidden = false;
+    }
+
+    // Bloqueia ou libera todos os campos do formulário
+    function bloquearFormulario(bloquear) {
+        Array.from(campos).forEach(function (campo) {
+            campo.disabled = bloquear;
+        });
+    }
+
+    // GET - Consulta a safra pela API REST e preenche o formulário
+    async function carregarSafra() {
+
+        mensagemErro.hidden = true;
+        bloquearFormulario(true);
+        botaoSalvar.textContent = "Carregando...";
+
+        try {
+
+            const resposta = await fetch(
+                formulario.dataset.apiUrl,
+                {
+                    method: "GET",
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+            if (resposta.status === 404) {
+                mostrarErro("A safra não foi encontrada.");
+                return;
+            }
+
+            if (!resposta.ok) {
+                throw new Error("Erro HTTP " + resposta.status);
+            }
+
+            const safra = await resposta.json();
+
+            campos["ano"].value = safra.ano;
+            campos["tipoCultura"].value = safra.tipoCultura || "";
+            campos["quantidade"].value = safra.quantidade;
+            campos["unidadeMedida"].value = safra.unidadeMedida || "";
+            campos["valorVendaUnidade"].value = safra.valorVendaUnidade;
+
+            bloquearFormulario(false);
+
+        } catch (erro) {
+
+            console.error("Erro ao carregar safra:", erro);
+
+            mostrarErro(
+                "Não foi possível carregar a safra pela API."
+            );
+
+        } finally {
+
+            botaoSalvar.textContent = textoBotao;
+
+        }
+    }
+
     formulario.addEventListener("submit", async function (evento) {
 
         // Impede o envio tradicional do formulário
@@ -24,21 +92,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const dados = {
 
             ano: Number(
-                formulario.elements["ano"].value
+                campos["ano"].value
             ),
 
-            tipoCultura: formulario.elements["tipoCultura"]
+            tipoCultura: campos["tipoCultura"]
                 .value.trim(),
 
             quantidade: Number(
-                formulario.elements["quantidade"].value
+                campos["quantidade"].value
             ),
 
-            unidadeMedida: formulario.elements["unidadeMedida"]
+            unidadeMedida: campos["unidadeMedida"]
                 .value.trim(),
 
             valorVendaUnidade: Number(
-                formulario.elements["valorVendaUnidade"]
+                campos["valorVendaUnidade"]
                     .value.replace(",", ".")
             )
         };
@@ -55,10 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dados.valorVendaUnidade < 0
         ) {
 
-            mensagemErro.textContent =
-                "Verifique os dados informados.";
-
-            mensagemErro.hidden = false;
+            mostrarErro("Verifique os dados informados.");
 
             return;
         }
@@ -114,16 +179,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             console.error("Erro ao editar safra:", erro);
 
-            mensagemErro.textContent = erro.message;
-            mensagemErro.hidden = false;
+            mostrarErro(erro.message);
 
         } finally {
 
             botaoSalvar.disabled = false;
-            botaoSalvar.textContent = "Salvar alterações";
+            botaoSalvar.textContent = textoBotao;
 
         }
 
     });
+
+    carregarSafra();
 
 });
