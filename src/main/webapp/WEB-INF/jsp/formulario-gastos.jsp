@@ -3,16 +3,16 @@
 <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
-<%-- A variável 'acao' já é fornecida pelo GastosPaginaController. --%>
 <c:choose>
-    <c:when test="${fn:contains(acao, '/editar/')}">
+    <c:when test="${not empty gastoId}">
+        <c:set var="titulo" value="Editar gasto" />
         <c:set var="metodoRest" value="PUT" />
-        <c:set var="idGasto" value="${fn:substringAfter(acao, '/editar/')}" />
-        <c:set var="urlApi" value="${ctx}/gastos/${idGasto}" />
+        <c:set var="urlApi" value="${ctx}/gastos/${gastoId}" />
         <c:set var="sucesso" value="editado" />
         <c:set var="textoBotao" value="Salvar alterações" />
     </c:when>
     <c:otherwise>
+        <c:set var="titulo" value="Cadastrar gasto" />
         <c:set var="metodoRest" value="POST" />
         <c:set var="urlApi" value="${ctx}/safra/${safraId}/gastos" />
         <c:set var="sucesso" value="cadastrado" />
@@ -71,7 +71,10 @@
             <form id="formGastoApi"
                   data-metodo="${metodoRest}"
                   data-api-url="${urlApi}"
-                  data-sucesso-url="${ctx}/painel/safras/${safraId}/gastos?${sucesso}=1">
+                  data-sucesso-url="${ctx}/painel/safras/${safraId}/gastos?${sucesso}=1"
+                  data-carregar-url="${ctx}/safra/${safraId}/gastos"
+                                    data-gasto-id="${gastoId}">
+
 
                 <div class="form-grid">
                     <div class="field">
@@ -114,6 +117,6 @@
         </section>
     </main>
 </div>
-<script src="${ctx}/formulario-gastos.js?v=2"></script>
+<script src="${ctx}/formulario-gastos.js?v=3"></script>
 </body>
 </html>
